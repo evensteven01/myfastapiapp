@@ -1,0 +1,23 @@
+#Important setup
+|_ .devcontainer/
+    devcontainer.json   # This isolates your environment to a running container.
+    Dockerfile
+|_ .vscode/
+    launch.json         # This allows for debugging
+|_ src/
+    main.py             # Entry point for app
+    app.py              # Place the concept of an Application class.
+Pipfile
+
+# Starlette
+FastAPI is a wrapper around Starlette, so it will often be important to understand how Starlette works.
+
+# Containers
+Running in containers locally and in cloud simplifies deployment and reduces conflicts
+
+# VSCode debugging
+Being able to set breakpoints is pivotal in debugging applications
+
+# FastAPI and Asynchronous code
+FastAPI supports async.
+You should definitely use async if your code is doing any IO (network calls, database calls, reading/writing to disc)
