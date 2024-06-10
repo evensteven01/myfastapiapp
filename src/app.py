@@ -9,6 +9,8 @@ from typing import Any
 
 from fastapi.applications import FastAPI
 
+from src.fe.fe import configure_frontend
+from src.fe.routes import router as static_router
 from src.time_service.routes import router as time_router
 from src.settings import get_settings, Settings
 from src.middleware import catch_exceptions_middleware, filter_requests_middleware, log_incoming_message_middleware
@@ -36,6 +38,7 @@ class MyApp(FastAPI):
         print("Setting up application.")
         setup_logging(self._settings)
         configure_middleware(self)
+        configure_frontend(self)
         logger.debug("Logging set up.")
 
 @asynccontextmanager
@@ -55,6 +58,7 @@ def configure_routes(app: MyApp) -> None:
     """Configure the routes for the application."""
     logger.debug("Configuring routes.")
     app.include_router(time_router)
+    app.include_router(static_router)
 
 
 def setup_logging(settings: Settings):

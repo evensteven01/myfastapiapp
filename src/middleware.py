@@ -36,5 +36,6 @@ async def filter_requests_middleware(request: Request, call_next) -> Any:
             return JSONResponse(
                 status_code=403, content={"message": "Year cannot be greater than 2024"}
             )
-
+        
     return await call_next(request)
+    

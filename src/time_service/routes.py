@@ -12,7 +12,7 @@ from src.time_service.models import DateFromModel
 
 # This is used to group routes together.
 # You can have more than one APIRouter, for different parts in your code
-router = APIRouter(prefix="/myapp")
+router = APIRouter(prefix="/api/time_service")
 
 @router.get("/current_time/")
 async def get_current_time(time_service: TimeService = Depends()):
@@ -37,7 +37,7 @@ async def get_date_offset(offset: int, time_service: TimeService = Depends()):
     return {"date_offset": time_service.get_date_offset(offset)}
 
 # Here youre using path parameters, so you'd use get_part/year
-@router.get("/get_part/{part}")
+@router.get("/get_part/{user_id}")
 async def get_date_part(part: str, time_service: TimeService = Depends()):
     """
     Get the date part.
